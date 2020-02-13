@@ -21,13 +21,20 @@ blogsRouter.get('/:id', (request, response, next) => {
 
 blogsRouter.post('/', (request, response, next) => {
   const body = request.body
-
+  console.log('helvettiiiiiiiiiiiiiiiiiiiiiiiiiiii')
+  console.log(body.title, body.url)
+  if (!body.title || !body.url) {
+    return response.status(400).json({ error: 'title or url missing' })
+  }
   const blog = new Blog({
     title: body.title,
     author: body.author,
     url: body.url,
     likes: body.likes
   })
+  if (!body.likes) {
+    blog.likes = 0
+  }
 
   blog.save()
     .then(savedBlog => {
