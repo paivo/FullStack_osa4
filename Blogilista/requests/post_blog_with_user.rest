@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Topen toppuuttelu",
+    "author": "Tobelius",
+    "url": "www.hgfd.fi",
+    "likes": 4,
+    "userId": "5e4a92b7124d6124d3cdf6ae"
+}

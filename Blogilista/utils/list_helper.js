@@ -12,7 +12,6 @@ const totalLikes = (blogs) => {
 }
 
 const favoriteBlog = (blogs) => {
-  const likes = blogs.map(blog => blog.likes)
   let favorite = ''
   let maximum = 0
   blogs.forEach(element => {
@@ -24,9 +23,31 @@ const favoriteBlog = (blogs) => {
   return favorite, maximum
 }
 
+const mostBlogs = (blogs) => {
+  const authors = blogs.map(blog => blog.author)
+  let i = 0
+  let maxindex = 0
+  let maxcount = 0
+  authors.forEach(author => {
+    let count = 0
+    blogs.forEach( blog => {
+      if (author === blog.author) {
+        count++
+      }
+    })
+    if (count>maxcount) {
+      maxcount = count
+      maxindex = i
+    }
+    i++
+  })
+  return authors[maxindex], maxindex
+}
+
 
 module.exports = {
   dummy,
   totalLikes,
-  favoriteBlog
+  favoriteBlog,
+  mostBlogs
 }
